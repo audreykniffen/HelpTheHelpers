@@ -10,16 +10,11 @@ namespace HelpTheHelpers.Controllers
 {
     public class TasksController : Controller
     {
-        // GET: /<controller>/
-       // [HttpGet]
+         static private List<string> Tasks = new List<string>();
 
+        // GET: /<controller>/
         public IActionResult Index()
         {
-            List<string> Tasks = new List<string>();
-            Tasks.Add("Laundry");
-            Tasks.Add("Get Medicine");
-            Tasks.Add("Fence Repair");
-
             ViewBag.tasks = Tasks;
 
             return View();
@@ -32,6 +27,14 @@ namespace HelpTheHelpers.Controllers
 
             return View();
         }
-   
+
+        [HttpPost]
+        [Route("/Tasks/Add")]
+        public IActionResult NewTask(string name)
+        {
+            Tasks.Add(name);
+
+            return Redirect("/Tasks");
+        }
     }
 }
