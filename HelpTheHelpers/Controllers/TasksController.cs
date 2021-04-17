@@ -4,18 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace HelpTheHelpers.Controllers
 {
     public class TasksController : Controller
     {
-         static private List<string> Tasks = new List<string>();
+        static private List<Task> Tasks = new List<Task>();
 
-        // GET: /<controller>/
+      
         public IActionResult Index()
         {
-            ViewBag.tasks = Tasks;
+            ViewBag.tasks = TaskData.GetAll();
 
             return View();
         }
@@ -30,9 +28,9 @@ namespace HelpTheHelpers.Controllers
 
         [HttpPost]
         [Route("/Tasks/Add")]
-        public IActionResult NewTask(string name)
+        public IActionResult NewTask(string name, string desc)
         {
-            Tasks.Add(name);
+            Tasks.Add(new Task(name, desc));
 
             return Redirect("/Tasks");
         }
