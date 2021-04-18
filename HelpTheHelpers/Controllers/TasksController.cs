@@ -5,31 +5,45 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HelpTheHelpers.Data;
 using HelpTheHelpers.Models;
+using HelpTheHelpers.ViewModels;
 
 
 namespace HelpTheHelpers.Controllers
 {
     public class TasksController : Controller
     {
-      
+    
         public IActionResult Index()
-        {
-            ViewBag.tasks = TaskData.GetAll();
 
-            return View();
+        {
+            if (ModelState.isValid)
+            {
+                Task newTask = new Task
+            }
+                List<Task> tasks = new List<Task>TaskData.GetAll();
+
+            return View(tasks);
         }
         public IActionResult Add()
         {
-            return View();
-        }
-            // Any additional method code here
+            AddTaskViewModel addTaskViewModel = new AddTaskViewModel();
 
- 
+            return View(addTaskViewModel);
+        }
+
     [HttpPost]
     [Route("Tasks/Add")]
-    public IActionResult NewTask (string name, string desc)
+    public IActionResult Add(AddTaskViewModel addTaskViewModel)
     {
-        TaskData.Add(new Task(name, desc));
+            Task newTask = new Task
+            {
+                Name = addTaskViewModel.Name,
+                Description = addTaskViewModel.Description,
+               ContactNumber = addTaskViewModel.ContactNumber
+          };
+
+        TaskData.Add(newTask);
+            return Redirect 
 
 
         return Redirect("/Tasks");
@@ -43,14 +57,14 @@ namespace HelpTheHelpers.Controllers
     }
 
     [HttpPost]
-    public IActionResult Delete(int[] eventIds)
+    public IActionResult Delete(int[] taskIds)
     {
-        foreach (int eventId in eventIds)
+        foreach (int taskId in taskIds)
         {
-           TaskData.Remove(eventId);
+           TaskData.Remove(taskId);
         }
 
-        return Redirect("/Events");
+        return Redirect("/Tasks");
     }
 
     }

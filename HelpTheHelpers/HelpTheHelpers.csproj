@@ -7,6 +7,7 @@
   <ItemGroup>
     <Folder Include="Views\Tasks\" />
     <Folder Include="Data\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\x.cs" />

@@ -5,16 +5,25 @@ namespace HelpTheHelpers.Models
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public string ContactNumber { get; set; }
 
         public int Id { get; }
         static private int nextId = 1;
 
-        public Task(string name, string description)
+        public Task()
+        {
+            Id = nextId;
+            nextId++;
+        }
+
+        public Task(string name, string description, string contactNumber) : this()
         {
             Name = name;
             Description = description;
+            ContactNumber = contactNumber;
             Id = nextId;
             nextId++;
+           
         }
 
         public override string ToString()
