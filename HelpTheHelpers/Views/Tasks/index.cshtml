@@ -4,6 +4,12 @@
     <a asp-controller="Tasks" asp-action="Add">Add Task</a>
 </p>
 
+
+<p>
+    <a asp-controller="Tasks" asp-action="Delete">Delete Task</a>
+</p>
+
+
 @if (ViewBag.tasks.Count == 0)
 {
     <p>Please enter a task!</p>
@@ -21,11 +27,11 @@ else
         </tr>
         @foreach (var tsk in ViewBag.tasks)
         {
-        <tr>
-            <td>@tsk.Id</td>
-            <td>@tsk.Name</td>
-            <td>@tsk.Description</td>
-        </tr>
+            <tr>
+                <td>@tsk.Id</td>
+                <td>@tsk.Name</td>
+                <td>@tsk.Description</td>
+            </tr>
         }
     </table>
 }
