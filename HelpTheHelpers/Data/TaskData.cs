@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using HelpTheHelpers.Models;
 using Task.Models;
 
 
@@ -32,6 +33,11 @@ namespace HelpTheHelpers.Data
         public static Task GetById(int id)
         {
             return Tasks[id];
+        }
+
+        internal static void Add(Task newTask)
+        {
+            throw new NotImplementedException();
         }
     }
 }

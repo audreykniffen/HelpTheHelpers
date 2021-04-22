@@ -6,6 +6,7 @@ namespace HelpTheHelpers.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string ContactNumber { get; set; }
+        public DueDate Date { get; set; }
 
         public int Id { get; }
         static private int nextId = 1;
@@ -21,8 +22,7 @@ namespace HelpTheHelpers.Models
             Name = name;
             Description = description;
             ContactNumber = contactNumber;
-            Id = nextId;
-            nextId++;
+  
            
         }
 

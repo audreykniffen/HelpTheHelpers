@@ -12,15 +12,11 @@ namespace HelpTheHelpers.Controllers
 {
     public class TasksController : Controller
     {
-    
+
         public IActionResult Index()
 
         {
-            if (ModelState.isValid)
-            {
-                Task newTask = new Task
-            }
-                List<Task> tasks = new List<Task>TaskData.GetAll();
+            List<Task> tasks = new List<Task>(TaskData.GetAll());
 
             return View(tasks);
         }
@@ -31,41 +27,46 @@ namespace HelpTheHelpers.Controllers
             return View(addTaskViewModel);
         }
 
-    [HttpPost]
-    [Route("Tasks/Add")]
-    public IActionResult Add(AddTaskViewModel addTaskViewModel)
-    {
-            Task newTask = new Task
-            {
-                Name = addTaskViewModel.Name,
-                Description = addTaskViewModel.Description,
-               ContactNumber = addTaskViewModel.ContactNumber
-          };
-
-        TaskData.Add(newTask);
-            return Redirect 
-
-
-        return Redirect("/Tasks");
-    }
-
-    public IActionResult Delete()
-    {
-        ViewBag.tasks = TaskData.GetAll();
-
-        return View();
-    }
-
-    [HttpPost]
-    public IActionResult Delete(int[] taskIds)
-    {
-        foreach (int taskId in taskIds)
+        [HttpPost]
+        [Route("Tasks/Add")]
+        public IActionResult Add(AddTaskViewModel addTaskViewModel)
         {
-           TaskData.Remove(taskId);
+            if (ModelState.IsValid)
+            {
+                Task newTask = new Task
+
+                {
+                    Name = addTaskViewModel.Name,
+                    Description = addTaskViewModel.Description,
+                    ContactNumber = addTaskViewModel.ContactNumber,
+                    date = addTaskViewModel.date,
+                };
+
+                TaskData.Add(newTask);
+                return Redirect;
+
+
+                return Redirect("/Tasks");
+            }
+
+            public IActionResult Delete()
+            {
+                ViewBag.tasks = TaskData.GetAll();
+
+                return View();
+            }
+
+            [HttpPost]
+            public IActionResult Delete(int[] taskIds)
+            {
+                foreach (int taskId in taskIds)
+                {
+                    TaskData.Remove(taskId);
+                }
+
+                return Redirect("/Tasks");
+            }
+
         }
-
-        return Redirect("/Tasks");
-    }
-
     }
 }
