@@ -1,28 +1,30 @@
 ﻿using System;
+using Microsoft.AspNetCore.Mvc;
+
 namespace HelpTheHelpers.Models
 {
     public class Task
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public string ContactNumber { get; set; }
-        public DueDate Date { get; set; }
+        public string DueDate { get; set; }
+        public TaskCategory Category { get; set; }
+        public int CategoryId { get; set; }
+
 
         public int Id { get; }
-        static private int nextId = 1;
 
-        public Task()
-        {
-           
-        }
-
-        public Task(string name, string description, string contactNumber)
+     
+        public Task(string name, string description, string DueDate)
         {
             Name = name;
             Description = description;
-            ContactNumber = contactNumber;
+            DueDate = duedate;
   
            
+        }
+        public Task()
+        {
         }
 
         public override string ToString()

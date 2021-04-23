@@ -1,6 +1,6 @@
-﻿@using HelpTheHelpers.Models
+﻿
+@model List<HelpTheHelpers.Models.Task>
 
-@model List<Task>
 <h1>To-Do List</h1>
 
 <p>
@@ -28,10 +28,10 @@ else
                 Description
             </th>
             <th>
-                Contact Number
+                Contact Info
             </th>
             <th>
-                Date
+                Assigned To
             </th>
         </tr>
         @foreach (var tsk in ViewBag.tasks)
@@ -41,6 +41,7 @@ else
         <td>@tsk.Name</td>
         <td>@tsk.Description</td>
         <td>@tsk.ContactNumber</td>
+        <td>@tsk.Category.Name</td>
     </tr>
         }
     </table>

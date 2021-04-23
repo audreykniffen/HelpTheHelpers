@@ -17,20 +17,30 @@ namespace HelpTheHelpers.ViewModels
         public string Description { get; set; }
 
         [EmailAddress]
-        public string ContactNumber { get; set; }
+        public string ContactEmail { get; set; }
 
-        public DueDate date { get; set; }
+        [Required(ErrorMessage = "Please Assign this Task")]
+        public int CategoryId { get; set; }
 
-        /* public List<SelectListItem> DueDate { get; set; } = new List<SelectListItem>
+        public List<SelectListItem> Categories { get; set; }
+
+        public AddTaskViewModel(List<TaskCategory> categories)
         {
-            new SelectListItem(DueDate.ASAP.ToString(), ((int)DueDate.ASAP).ToString()),
-            new SelectListItem(DueDate.Today.ToString(), ((int)DueDate.Today).ToString()),
-            new SelectListItem(DueDate.Tomorrow.ToString(), ((int)DueDate.Tomorrow).ToString()),
-            new SelectListItem(DueDate.ThisWeek.ToString(), ((int)DueDate.ThisWeek).ToString()),
-            new SelectListItem(DueDate.ThisMonth.ToString(), ((int)DueDate.ThisMonth).ToString()),
-            new SelectListItem(DueDate.ThisYear.ToString(), ((int)DueDate.ThisYear).ToString()),
+            Categories = new List<SelectListItem>();
 
-        };
-        */
+            foreach (var category in categories)
+            {
+                Categories.Add(
+                    new SelectListItem
+                    {
+                        Value = category.Id.ToString(),
+                        Text = category.Name
+                    }
+                ); ;
+            }
+        }
+
+        public AddTaskViewModel() { }
+
     }
 }

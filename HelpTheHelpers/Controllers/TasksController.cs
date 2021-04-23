@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using HelpTheHelpers.Data;
 using HelpTheHelpers.Models;
 using HelpTheHelpers.ViewModels;
@@ -11,41 +12,43 @@ namespace HelpTheHelpers.Controllers
 {
     public class TasksController : Controller
     {
-        private TaskDbContext contex;
+        private TaskDbContext context;
 
-        public TasksController(TaskDbContext dBContext)
+        public TasksController(TaskDbContext dbContext)
         {
-            context = dBContext;
+            context = dbContext;
         }
 
+        // GET: /<controller>/
         public IActionResult Index()
-
         {
-            List<Task> tasks = context.Tasks.ToList();
+            List<Task> tasks = context.Tasks
+                .Include(e => e.Category)
+                .ToList();
 
             return View(tasks);
         }
 
         public IActionResult Add()
         {
-            AddTaskViewModel addTaskViewModel = new AddTaskViewModel();
+            List<TaskCategory> categories = context.Categories.ToList();
+            AddTaskViewModel addTaskViewModel = new AddTaskViewModel(categories);
 
             return View(addTaskViewModel);
         }
 
         [HttpPost]
-        [Route("Tasks/Add")]
-        public IActionResult Add(AddTaskViewModel addTaskViewModel)
+        public IActionResult Add(AddTaskViewModel addEventViewModel)
         {
             if (ModelState.IsValid)
             {
+                TaskCategory theCategory = context.Categories.Find(addTaskViewModel.CategoryId);
                 Task newTask = new Task
-
                 {
-                    Name = addTaskViewModel.Name,
+                    Name = addEventViewModel.Name,
                     Description = addTaskViewModel.Description,
-                    ContactNumber = addTaskViewModel.ContactNumber,
-                    date = addTaskViewModel.date,
+                    ContactEmail = addTaskViewModel.DueDate,
+                    Category = theCategory
                 };
 
                 context.Tasks.Add(newTask);
@@ -55,16 +58,16 @@ namespace HelpTheHelpers.Controllers
             }
 
             return View(addTaskViewModel);
-
         }
 
         public IActionResult Delete()
         {
-            ViewBag.tasks = context.Events.ToList();
+            ViewBag.events = context.Tasks.ToList();
 
             return View();
         }
 
+        [HttpPost]
         public IActionResult Delete(int[] taskIds)
         {
             foreach (int taskId in taskIds)
@@ -72,9 +75,20 @@ namespace HelpTheHelpers.Controllers
                 Task theTask = context.Tasks.Find(taskId);
                 context.Tasks.Remove(theTask);
             }
-            context.SaveChages();
+
+            context.SaveChanges();
 
             return Redirect("/Tasks");
+        }
+
+        public IActionResult Detail(int id)
+        {
+            Task theTask = context.Tasks
+               .Include(e => e.Category)
+               .Single(e => e.Id == id);
+
+            TaskDetailViewModel viewModel = new TaskDetailViewModel(theTask);
+            return View(viewModel);
         }
     }
 }
