@@ -21,7 +21,7 @@ namespace HelpTheHelpers.ViewModels
 
         public DueDate date { get; set; }
 
-        public List<SelectListItem> DueDate { get; set; } = new List<SelectListItem>
+        /* public List<SelectListItem> DueDate { get; set; } = new List<SelectListItem>
         {
             new SelectListItem(DueDate.ASAP.ToString(), ((int)DueDate.ASAP).ToString()),
             new SelectListItem(DueDate.Today.ToString(), ((int)DueDate.Today).ToString()),
@@ -31,5 +31,6 @@ namespace HelpTheHelpers.ViewModels
             new SelectListItem(DueDate.ThisYear.ToString(), ((int)DueDate.ThisYear).ToString()),
 
         };
+        */
     }
 }

@@ -13,11 +13,10 @@ namespace HelpTheHelpers.Models
 
         public Task()
         {
-            Id = nextId;
-            nextId++;
+           
         }
 
-        public Task(string name, string description, string contactNumber) : this()
+        public Task(string name, string description, string contactNumber)
         {
             Name = name;
             Description = description;

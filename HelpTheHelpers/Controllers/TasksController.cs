@@ -7,19 +7,25 @@ using HelpTheHelpers.Data;
 using HelpTheHelpers.Models;
 using HelpTheHelpers.ViewModels;
 
-
 namespace HelpTheHelpers.Controllers
 {
     public class TasksController : Controller
     {
+        private TaskDbContext contex;
+
+        public TasksController(TaskDbContext dBContext)
+        {
+            context = dBContext;
+        }
 
         public IActionResult Index()
 
         {
-            List<Task> tasks = new List<Task>(TaskData.GetAll());
+            List<Task> tasks = context.Tasks.ToList();
 
             return View(tasks);
         }
+
         public IActionResult Add()
         {
             AddTaskViewModel addTaskViewModel = new AddTaskViewModel();
@@ -42,31 +48,33 @@ namespace HelpTheHelpers.Controllers
                     date = addTaskViewModel.date,
                 };
 
-                TaskData.Add(newTask);
-                return Redirect;
-
-
-                return Redirect("/Tasks");
-            }
-
-            public IActionResult Delete()
-            {
-                ViewBag.tasks = TaskData.GetAll();
-
-                return View();
-            }
-
-            [HttpPost]
-            public IActionResult Delete(int[] taskIds)
-            {
-                foreach (int taskId in taskIds)
-                {
-                    TaskData.Remove(taskId);
-                }
+                context.Tasks.Add(newTask);
+                context.SaveChanges();
 
                 return Redirect("/Tasks");
             }
 
+            return View(addTaskViewModel);
+
+        }
+
+        public IActionResult Delete()
+        {
+            ViewBag.tasks = context.Events.ToList();
+
+            return View();
+        }
+
+        public IActionResult Delete(int[] taskIds)
+        {
+            foreach (int taskId in taskIds)
+            {
+                Task theTask = context.Tasks.Find(taskId);
+                context.Tasks.Remove(theTask);
+            }
+            context.SaveChages();
+
+            return Redirect("/Tasks");
         }
     }
 }
