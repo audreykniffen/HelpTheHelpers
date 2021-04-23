@@ -1,17 +1,25 @@
 ﻿@model HelpTheHelpers.ViewModels.TaskDetailViewModel
 
+<h1>@Model.Name</h1>
+
 <table class="table">
     <tr>
         <th>Description</th>
         <td>@Model.Description</td>
     </tr>
     <tr>
-        <th>Contact Email</th>
-        <td>@Model.ContactEmail</td>
+        <th>Contact Number</th>
+        <td>@Model.ContactNumber</td>
     </tr>
     <tr>
         <th>Category</th>
         <td>@Model.CategoryName</td>
     </tr>
+    <tr>
+        <th>Tags</th>
+        <td>@Model.TagText</td>
+    </tr>
 
 </table>
+
+<a asp-controller="Tag" asp-action="AddEvent" asp-route-id="@Model.TaskId">Add Tag</a>

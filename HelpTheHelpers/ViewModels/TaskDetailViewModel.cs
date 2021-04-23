@@ -7,18 +7,34 @@ namespace HelpTheHelpers.ViewModels
 {
     public class TaskDetailViewModel
     {
- 
 
+        public int TaskId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string ContactEmail { get; set; }
+        public string ContactNumber { get; set; }
         public string CategoryName { get; set; }
+        public string TagText { get; set; }
 
-        public TaskDetailViewModel(Task theTask)
+        public TaskDetailViewModel(Task theTask, List<TaskTag> taskTags)
         {
+            TaskId = theTask.Id;
             Name = theTask.Name;
             Description = theTask.Description;
+            ContactNumber = theTask.ContactNumber;
             CategoryName = theTask.Category.Name;
+
+            TagText = "";
+
+            for (var i = 0; i < taskTags.Count; i++)
+            {
+                TagText += "#" + taskTags[i].Tag.Name;
+
+                if (i < taskTags.Count - 1)
+                {
+                    TagText += ", ";
+                }
+            }
         }
     }
 }
+

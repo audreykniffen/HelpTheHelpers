@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HelpTheHelpers.Data;
 using HelpTheHelpers.Models;
 using HelpTheHelpers.ViewModels;
+
 
 namespace HelpTheHelpers.Controllers
 {
@@ -22,7 +22,7 @@ namespace HelpTheHelpers.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            List<Task> tasks = context.Tasks
+            List<Models.Task> tasks = context.Tasks
                 .Include(e => e.Category)
                 .ToList();
 
@@ -38,16 +38,16 @@ namespace HelpTheHelpers.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(AddTaskViewModel addEventViewModel)
+        public IActionResult Add(AddTaskViewModel addTaskViewModel)
         {
             if (ModelState.IsValid)
             {
                 TaskCategory theCategory = context.Categories.Find(addTaskViewModel.CategoryId);
                 Task newTask = new Task
                 {
-                    Name = addEventViewModel.Name,
+                    Name = addTaskViewModel.Name,
                     Description = addTaskViewModel.Description,
-                    ContactEmail = addTaskViewModel.DueDate,
+                    //ContactEmail = addTaskViewModel.ContactEmail,
                     Category = theCategory
                 };
 
@@ -87,7 +87,12 @@ namespace HelpTheHelpers.Controllers
                .Include(e => e.Category)
                .Single(e => e.Id == id);
 
-            TaskDetailViewModel viewModel = new TaskDetailViewModel(theTask);
+            List<TaskTag> taskTags = context.TaskTags
+                .Where(et => et.EventId == id)
+                .Include(et => et.Tag)
+                .ToList();
+
+            TaskDetailViewModel viewModel = new TaskDetailViewModel(theTask, taskTags);
             return View(viewModel);
         }
     }

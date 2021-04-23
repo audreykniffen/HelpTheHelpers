@@ -46,5 +46,66 @@ namespace HelpTheHelpers.Controllers
 
             return View("Add", tag);
         }
+        public IActionResult AddTask(int id)
+        {
+            Task = theTask = context.Tasks.Find(id);
+            List<Tag> possibleTags = context.Tags.ToList();
+
+            AddTaskTagViewModel viewModel = new AddTaskTagViewModel(theTask, possibleTags);
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult AddEvent(AddTaskTagViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                int tasktId = viewModel.TaskId;
+                int tagId = viewModel.TagId;
+
+                List<TaskTag> existingItems = context.Tasks
+                    .Where(et => et.TaskId == tasktId)
+                    .Where(et => et.TagId == tagId)
+                    .ToList();
+
+                if (existingItems.Count == 0)
+                {
+
+                    TaskTag taskTag = new TaskTag
+                    {
+                        TaskId = taskId,
+                        TagId = tagId
+                    };
+
+                    context.TaskTags.Add(taskTag);
+                    context.SaveChanges();
+                }
+
+                TaskTag eventTag = new TaskTag
+                {
+                    TaskId = taskId,
+                    TagId = tagId
+                };
+
+                context.EventTags.Add(eventTag);
+                context.SaveChanges();
+
+                return Redirect("/Tasks/Detail/" + taskId);
+            }
+
+            return View(viewModel);
+        }
+
+        public IActionResult Detail(int id)
+        {
+            List<TaskTag> taskTags = context.EventTags
+                .Where(et => et.TagId == id)
+                .Include(et => et.Task)
+                .Include(et => et.Tag)
+                .ToList();
+
+            return View(taskTags);
+        }
     }
 }

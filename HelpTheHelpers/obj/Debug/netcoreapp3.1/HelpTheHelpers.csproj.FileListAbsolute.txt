@@ -36,3 +36,9 @@
 /Users/audreykniffen/Projects/HelpTheHelpers/HelpTheHelpers/obj/Debug/netcoreapp3.1/HelpTheHelpers.genruntimeconfig.cache
 /Users/audreykniffen/Projects/HelpTheHelpers/HelpTheHelpers/obj/Debug/netcoreapp3.1/HelpTheHelpers.csproj.CopyComplete
 /Users/audreykniffen/Projects/HelpTheHelpers/HelpTheHelpers/obj/Debug/netcoreapp3.1/Razor/Views/Tasks/Add.cshtml.g.cs
+/Users/audreykniffen/Projects/HelpTheHelpers/HelpTheHelpers/obj/Debug/netcoreapp3.1/Razor/Views/Tag/Add.cshtml.g.cs
+/Users/audreykniffen/Projects/HelpTheHelpers/HelpTheHelpers/obj/Debug/netcoreapp3.1/Razor/Views/Tag/Index.cshtml.g.cs
+/Users/audreykniffen/Projects/HelpTheHelpers/HelpTheHelpers/obj/Debug/netcoreapp3.1/Razor/Views/TaskCategory/Create.cshtml.g.cs
+/Users/audreykniffen/Projects/HelpTheHelpers/HelpTheHelpers/obj/Debug/netcoreapp3.1/Razor/Views/TaskCategory/Index.cshtml.g.cs
+/Users/audreykniffen/Projects/HelpTheHelpers/HelpTheHelpers/obj/Debug/netcoreapp3.1/Razor/Views/Tasks/Delete.cshtml.g.cs
+/Users/audreykniffen/Projects/HelpTheHelpers/HelpTheHelpers/obj/Debug/netcoreapp3.1/Razor/Views/Tasks/Detail.cshtml.g.cs

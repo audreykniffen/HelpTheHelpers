@@ -1,0 +1,19 @@
+﻿
+@model List<HelpTheHelpers.Models.TaskTag>
+
+@if (Model.Count == 0)
+{
+    <h1>No Tasks Assigned to that Helper</h1>
+}
+else
+{
+    <h1>Events Tagged: @Model[0].Tag.Name</h1>
+
+    <ul>
+        @foreach (var evtTag in Model)
+        {
+            <li>@evtTag.Task.Name</li>
+        }
+    </ul>
+
+}

@@ -7,7 +7,7 @@ namespace HelpTheHelpers.Models
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public string DueDate { get; set; }
+        public string ContactNumber { get; set; }
         public TaskCategory Category { get; set; }
         public int CategoryId { get; set; }
 
@@ -15,11 +15,12 @@ namespace HelpTheHelpers.Models
         public int Id { get; }
 
      
-        public Task(string name, string description, string DueDate)
+        public Task(string name, string description, string contactNumber)
         {
             Name = name;
             Description = description;
-            DueDate = duedate;
+            ContactNumber = contactNumber;
+               
   
            
         }
