@@ -1,16 +1,19 @@
 ﻿<Properties StartupConfiguration="{C46057BC-1286-4CD5-87E7-5DB89DC011D8}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="HelpTheHelpers/wwwroot/css/site.css">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HelpTheHelpers/Controllers/TasksController.cs">
     <Files>
-      <File FileName="HelpTheHelpers/HelpTheHelpers.csproj" Line="1" Column="1" />
-      <File FileName="HelpTheHelpers/Controllers/HomeController.cs" Line="1" Column="1" />
-      <File FileName="HelpTheHelpers/Views/Home/Index.cshtml" Line="1" Column="1" />
-      <File FileName="HelpTheHelpers/Views/Tasks/Add.cshtml" Line="20" Column="48" />
-      <File FileName="HelpTheHelpers/Controllers/TasksController.cs" Line="51" Column="1" />
-      <File FileName="HelpTheHelpers/Views/Home/Deleate.cshtml" Line="22" Column="8" />
-      <File FileName="HelpTheHelpers/Views/Tasks/index.cshtml" Line="40" Column="31" />
-      <File FileName="HelpTheHelpers/Models/Task.cs" Line="24" Column="25" />
-      <File FileName="HelpTheHelpers/ViewModels/AddEventViewModel.cs" Line="20" Column="2" />
-      <File FileName="HelpTheHelpers/wwwroot/css/site.css" Line="1" Column="1" />
+      <File FileName="HelpTheHelpers/Views/TaskCategory/Index.cshtml" Line="16" Column="45" />
+      <File FileName="HelpTheHelpers/Views/TaskCategory/Create.cshtml" />
+      <File FileName="HelpTheHelpers/Models/Tag.cs" />
+      <File FileName="HelpTheHelpers/Models/Task.cs" />
+      <File FileName="HelpTheHelpers/Data/TaskDbContext.cs" Line="4" Column="1" />
+      <File FileName="HelpTheHelpers/ViewModels/AddTaskCategoryViewModel.cs" />
+      <File FileName="HelpTheHelpers/ViewModels/AddTaskTagViewModel.cs" Line="8" Column="37" />
+      <File FileName="HelpTheHelpers/ViewModels/AddTaskViewModel.cs" Line="5" Column="1" />
+      <File FileName="HelpTheHelpers/ViewModels/TaskDetailViewModel.cs" />
+      <File FileName="HelpTheHelpers/Views/Tag/AddTask.cshtml" Line="1" Column="1" />
+      <File FileName="HelpTheHelpers/Views/Tag/Index.cshtml" Line="4" Column="1" />
+      <File FileName="HelpTheHelpers/Controllers/TagController.cs" Line="10" Column="1" />
+      <File FileName="HelpTheHelpers/Controllers/TasksController.cs" Line="19" Column="33" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,23 +21,20 @@
           <Option id="ShowAllFiles" value="True" />
           <Node name="HelpTheHelpers" expanded="True">
             <Node name="HelpTheHelpers" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="TasksController.cs" selected="True" />
+              </Node>
+              <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Tasks" expanded="True" />
-              </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True">
-                  <Node name="site.css" selected="True" />
-                </Node>
+                <Node name="Tag" expanded="True" />
+                <Node name="TaskCategory" expanded="True" />
               </Node>
             </Node>
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
