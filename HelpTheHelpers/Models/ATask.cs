@@ -7,7 +7,6 @@ namespace HelpTheHelpers.Models
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public string ContactNumber { get; set; }
         public TaskCategory Category { get; set; }
         public int CategoryId { get; set; }
 
@@ -15,15 +14,14 @@ namespace HelpTheHelpers.Models
         public int Id { get; set; }
 
      
-        public ATask(string name, string description, string contactNumber)
+        public ATask(string name, string description)
         {
             Name = name;
             Description = description;
-            ContactNumber = contactNumber;
-               
-  
+            
            
         }
+
         public ATask()
         {
         }
@@ -35,8 +33,8 @@ namespace HelpTheHelpers.Models
 
         public override bool Equals(object obj)
         {
-            return obj is ATask @task &&
-                   Id == @task.Id;
+            return obj is ATask @Atask &&
+                   Id == @Atask.Id;
         }
 
         public override int GetHashCode()

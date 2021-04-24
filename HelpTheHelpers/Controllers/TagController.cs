@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using HelpTheHelpers.Data;
 using HelpTheHelpers.Models;
 using Microsoft.EntityFrameworkCore;
@@ -47,7 +48,7 @@ namespace HelpTheHelpers.Controllers
         }
         public IActionResult AddTask(int id)
         {
-            ATask theTask = context.Tasks.Find(id);
+            ATask theTask = context.ATask.Find(id);
             List<Tag> possibleTags = context.Tags.ToList();
 
             AddTaskTagViewModel viewModel = new AddTaskTagViewModel(theTask, possibleTags);
@@ -100,11 +101,13 @@ namespace HelpTheHelpers.Controllers
         {
             List<TaskTag> taskTags = context.TaskTags
                 .Where(et => et.TagId == id)
-                .Include(et => et.Task)
+                .Include(et => et.ATask)
                 .Include(et => et.Tag)
                 .ToList();
 
             return View(taskTags);
         }
+      
+
     }
 }

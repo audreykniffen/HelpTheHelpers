@@ -1,9 +1,9 @@
 ﻿@model HelpTheHelpers.ViewModels.AddTaskTagViewModel;
 
-<h1>Add Tag to Task: @Model.Task.Name</h1>
+<h1>Add Tag to Task: @Model.ATask.Name</h1>
 
 <form asp-controller="Tag" asp-action="AddTask" method="post">
-    <input type="hidden" value="@Model.Task.Id" name="TaskId" />
+    <input type="hidden" value="@Model.ATask.Id" name="TaskId" />
     <div class="form-group">
         <label asp-for="TagId">Tag</label>
         <select asp-for="TagId" asp-items="Model.Tags"></select>

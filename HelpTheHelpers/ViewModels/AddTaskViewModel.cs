@@ -16,9 +16,7 @@ namespace HelpTheHelpers.ViewModels
         [StringLength(500, ErrorMessage = "Description is too long")]
         public string Description { get; set; }
 
-        [EmailAddress]
-        public string ContactEmail { get; set; }
-
+        
         [Required(ErrorMessage = "Please Assign this Task")]
         public int CategoryId { get; set; }
 

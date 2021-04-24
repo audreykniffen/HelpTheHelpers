@@ -28,4 +28,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Controllers\IdentityController.cs" />
+  </ItemGroup>
 </Project>

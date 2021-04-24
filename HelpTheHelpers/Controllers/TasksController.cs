@@ -22,11 +22,11 @@ namespace HelpTheHelpers.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            List<Models.ATask> tasks = context.Tasks
+            List<Models.ATask> Atasks = context.ATask
                 .Include(e => e.Category)
                 .ToList();
 
-            return View(tasks);
+            return View(Atasks);
         }
 
         public IActionResult Add()
@@ -43,18 +43,18 @@ namespace HelpTheHelpers.Controllers
             if (ModelState.IsValid)
             {
                 TaskCategory theCategory = context.Categories.Find(addTaskViewModel.CategoryId);
-                ATask newTask = new ATask
+                ATask newATask = new ATask
                 {
                     Name = addTaskViewModel.Name,
                     Description = addTaskViewModel.Description,
-                    //ContactEmail = addTaskViewModel.ContactEmail,
+                    
                     Category = theCategory
                 };
 
-                context.Tasks.Add(newTask);
+                context.ATask.Add(newATask);
                 context.SaveChanges();
 
-                return Redirect("/Tasks");
+                return Redirect("/ATasks");
             }
 
             return View(addTaskViewModel);
@@ -62,7 +62,7 @@ namespace HelpTheHelpers.Controllers
 
         public IActionResult Delete()
         {
-            ViewBag.events = context.Tasks.ToList();
+            ViewBag.events = context.ATask.ToList();
 
             return View();
         }
@@ -72,8 +72,8 @@ namespace HelpTheHelpers.Controllers
         {
             foreach (int taskId in taskIds)
             {
-                ATask theTask = context.Tasks.Find(taskId);
-                context.Tasks.Remove(theTask);
+                ATask theTask = context.ATask.Find(taskId);
+                context.ATask.Remove(theTask);
             }
 
             context.SaveChanges();
@@ -83,7 +83,7 @@ namespace HelpTheHelpers.Controllers
 
         public IActionResult Detail(int id)
         {
-            ATask theTask = context.Tasks
+            ATask theTask = context.ATask
                .Include(e => e.Category)
                .Single(e => e.Id == id);
 

@@ -20,7 +20,7 @@ namespace HelpTheHelpers.ViewModels
             TaskId = theTask.Id;
             Name = theTask.Name;
             Description = theTask.Description;
-            ContactNumber = theTask.ContactNumber;
+          
             CategoryName = theTask.Category.Name;
 
             TagText = "";

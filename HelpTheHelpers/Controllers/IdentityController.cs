@@ -1,90 +1,90 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using HelpTheHelpers.ViewModels;
-using Microsoft.AspNetCore.Identity;
-using System.Threading.Tasks;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using Microsoft.AspNetCore.Mvc;
+//using HelpTheHelpers.ViewModels;
+//using Microsoft.AspNetCore.Identity;
+//using System.Threading.Tasks;
 
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+//// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace HelpTheHelpers.Controllers
-{
-    public class IdentityController : Controller
-    {
-        private readonly UserManager<IdentityUser> userManager;
-        private readonly SignInManager<IdentityUser> signInManager;
+//namespace HelpTheHelpers.Controllers
+//{
+//    public class IdentityController : Controller
+//    {
+//        private readonly UserManager<IdentityUser> userManager;
+//        private readonly SignInManager<IdentityUser> signInManager;
 
-        public AccountController(UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
-        {
-            this.userManager = userManager;
-            this.signInManager = signInManager;
-        }
+//        public AccountController(UserManager<IdentityUser> userManager,
+//            SignInManager<IdentityUser> signInManager)
+//        {
+//            this.userManager = userManager;
+//            this.signInManager = signInManager;
+//        }
 
-        [HttpPost]
-        public async Task<IActionResult> Logout()
-        {
-            await signInManager.SignOutAsync();
-            return RedirectToAction("index", "home");
-        }
+//        [HttpPost]
+//        public async Task<IActionResult> Logout()
+//        {
+//            await signInManager.SignOutAsync();
+//            return RedirectToAction("index", "home");
+//        }
 
-        [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
+//        [HttpGet]
+//        public IActionResult Register()
+//        {
+//            return View();
+//        }
 
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = new IdentityUser
-                {
-                    UserName = model.Email,
-                    Email = model.Email
-                };
+//        [HttpPost]
+//        public async Task<IActionResult> Register(RegisterViewModel model)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                var user = new IdentityUser
+//                {
+//                    UserName = model.Email,
+//                    Email = model.Email
+//                };
 
-                var result = await userManager.CreateAsync(user, model.Password);
+//                var result = await userManager.CreateAsync(user, model.Password);
 
-                if (result.Succeeded)
-                {
-                    await signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("index", "home");
-                }
+//                if (result.Succeeded)
+//                {
+//                    await signInManager.SignInAsync(user, isPersistent: false);
+//                    return RedirectToAction("index", "home");
+//                }
 
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
-            }
+//                foreach (var error in result.Errors)
+//                {
+//                    ModelState.AddModelError("", error.Description);
+//                }
+//            }
 
-            return View(model);
-        }
+//            return View(model);
+//        }
 
-        public IActionResult Login()
-        {
-            return View();
-        }
+//        public IActionResult Login()
+//        {
+//            return View();
+//        }
 
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+//        [HttpPost]
+//        public async Task<IActionResult> Login(LoginViewModel model)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("index", "home");
-                }
+//                if (result.Succeeded)
+//                {
+//                    return RedirectToAction("index", "home");
+//                }
 
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
-            }
+//                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+//            }
 
-            return View(model);
-        }
-    }
-}
+//            return View(model);
+//        }
+//    }
+//}

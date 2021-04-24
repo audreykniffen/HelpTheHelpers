@@ -4,7 +4,7 @@
 <h1>Add Task</h1>
 
 
-<form asp-controller="Events" asp-action="Add" method="post">
+<form asp-controller="Tasks" asp-action="Add" method="post">
     <div class="form-group">
         <label asp-for="Name"></label>
         <input asp-for="Name" />
@@ -15,13 +15,10 @@
         <input asp-for="Description" />
         <span asp-validation-for="Description"></span>
     </div>
-    <div class="form-group">
-        <label asp-for="ContactEmail">Contact Email</label>
-        <input asp-for="ContactEmail" />
-    </div>
+  
     <div class="form-group">
         <label asp-for="CategoryId">Category</label>
         <select asp-for="CategoryId" asp-items="Model.Categories"></select>
     </div>
-    <input type="submit" value="Add Event" />
+    <input type="submit" value="Add Task" />
 </form>

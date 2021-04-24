@@ -9,7 +9,7 @@ namespace HelpTheHelpers.ViewModels
     {
 
         public int TaskId { get; set; }
-        public ATask Task { get; set; }
+        public ATask ATask { get; set; }
 
         public List<SelectListItem> Tags { get; set; }
 
@@ -28,7 +28,7 @@ namespace HelpTheHelpers.ViewModels
                 });
             }
 
-            Task = theTask;
+            ATask = theTask;
         }
 
         public AddTaskTagViewModel()

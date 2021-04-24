@@ -53,5 +53,6 @@ namespace HelpTheHelpers.Controllers
 
             return View("Create", addEventCategoryViewModel);
         }
+       
     }
 }
