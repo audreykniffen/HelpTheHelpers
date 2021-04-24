@@ -9,13 +9,13 @@ namespace HelpTheHelpers.ViewModels
     {
 
         public int TaskId { get; set; }
-        public Task Task { get; set; }
+        public ATask Task { get; set; }
 
         public List<SelectListItem> Tags { get; set; }
 
         public int TagId { get; set; }
 
-        public AddTaskTagViewModel(Task theTask, List<Tag> possibleTags)
+        public AddTaskTagViewModel(ATask theTask, List<Tag> possibleTags)
         {
             Tags = new List<SelectListItem>();
 

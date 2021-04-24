@@ -10,7 +10,7 @@ namespace HelpTheHelpers.Models
 
         public int Id { get; set; }
 
-        public List<Task> events { get; set; }
+        public List<ATask> events { get; set; }
 
         public TaskCategory(string name)
         {

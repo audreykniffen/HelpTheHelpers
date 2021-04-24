@@ -47,7 +47,7 @@ namespace HelpTheHelpers.Controllers
         }
         public IActionResult AddTask(int id)
         {
-            Task theTask = context.Tasks.Find(id);
+            ATask theTask = context.Tasks.Find(id);
             List<Tag> possibleTags = context.Tags.ToList();
 
             AddTaskTagViewModel viewModel = new AddTaskTagViewModel(theTask, possibleTags);

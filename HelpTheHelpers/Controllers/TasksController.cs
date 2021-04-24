@@ -22,7 +22,7 @@ namespace HelpTheHelpers.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            List<Models.Task> tasks = context.Tasks
+            List<Models.ATask> tasks = context.Tasks
                 .Include(e => e.Category)
                 .ToList();
 
@@ -43,7 +43,7 @@ namespace HelpTheHelpers.Controllers
             if (ModelState.IsValid)
             {
                 TaskCategory theCategory = context.Categories.Find(addTaskViewModel.CategoryId);
-                Task newTask = new Task
+                ATask newTask = new ATask
                 {
                     Name = addTaskViewModel.Name,
                     Description = addTaskViewModel.Description,
@@ -72,7 +72,7 @@ namespace HelpTheHelpers.Controllers
         {
             foreach (int taskId in taskIds)
             {
-                Task theTask = context.Tasks.Find(taskId);
+                ATask theTask = context.Tasks.Find(taskId);
                 context.Tasks.Remove(theTask);
             }
 
@@ -83,7 +83,7 @@ namespace HelpTheHelpers.Controllers
 
         public IActionResult Detail(int id)
         {
-            Task theTask = context.Tasks
+            ATask theTask = context.Tasks
                .Include(e => e.Category)
                .Single(e => e.Id == id);
 

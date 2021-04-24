@@ -5,7 +5,7 @@ namespace HelpTheHelpers.Data
 {
     public class TaskDbContext : DbContext
     {
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<ATask> Tasks { get; set; }
         public DbSet<TaskCategory> Categories { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<TaskTag> TaskTags { get; set; }

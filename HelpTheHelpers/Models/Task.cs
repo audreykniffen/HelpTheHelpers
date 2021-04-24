@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HelpTheHelpers.Models
 {
-    public class Task
+    public class ATask
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -15,7 +15,7 @@ namespace HelpTheHelpers.Models
         public int Id { get; set; }
 
      
-        public Task(string name, string description, string contactNumber)
+        public ATask(string name, string description, string contactNumber)
         {
             Name = name;
             Description = description;
@@ -24,7 +24,7 @@ namespace HelpTheHelpers.Models
   
            
         }
-        public Task()
+        public ATask()
         {
         }
 
@@ -35,7 +35,7 @@ namespace HelpTheHelpers.Models
 
         public override bool Equals(object obj)
         {
-            return obj is Task @task &&
+            return obj is ATask @task &&
                    Id == @task.Id;
         }
 

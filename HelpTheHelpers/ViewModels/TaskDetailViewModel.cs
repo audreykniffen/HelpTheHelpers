@@ -15,7 +15,7 @@ namespace HelpTheHelpers.ViewModels
         public string CategoryName { get; set; }
         public string TagText { get; set; }
 
-        public TaskDetailViewModel(Task theTask, List<TaskTag> taskTags)
+        public TaskDetailViewModel(ATask theTask, List<TaskTag> taskTags)
         {
             TaskId = theTask.Id;
             Name = theTask.Name;
