@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using HelpTheHelpers.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace CodingEventsDemo.ViewModels
+namespace HelpTheHelpers.ViewModels
 {
     public class AddTaskTagViewModel
     {
