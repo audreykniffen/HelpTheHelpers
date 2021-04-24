@@ -88,7 +88,7 @@ namespace HelpTheHelpers.Controllers
                .Single(e => e.Id == id);
 
             List<TaskTag> taskTags = context.TaskTags
-                .Where(et => et.EventId == id)
+                .Where(et => et.TaskId == id)
                 .Include(et => et.Tag)
                 .ToList();
 

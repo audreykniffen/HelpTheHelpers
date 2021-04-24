@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using HelpTheHelpers.Data;
 using HelpTheHelpers.Models;
-using HelpTheHelpers.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using HelpTheHelpers.ViewModels;
+
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -48,7 +47,7 @@ namespace HelpTheHelpers.Controllers
         }
         public IActionResult AddTask(int id)
         {
-            Task = theTask = context.Tasks.Find(id);
+            Task theTask = context.Tasks.Find(id);
             List<Tag> possibleTags = context.Tags.ToList();
 
             AddTaskTagViewModel viewModel = new AddTaskTagViewModel(theTask, possibleTags);
@@ -61,11 +60,11 @@ namespace HelpTheHelpers.Controllers
         {
             if (ModelState.IsValid)
             {
-                int tasktId = viewModel.TaskId;
+                int taskId = viewModel.TaskId;
                 int tagId = viewModel.TagId;
 
-                List<TaskTag> existingItems = context.Tasks
-                    .Where(et => et.TaskId == tasktId)
+                List<TaskTag> existingItems = context.TaskTags
+                    .Where(et => et.TaskId == taskId)
                     .Where(et => et.TagId == tagId)
                     .ToList();
 
@@ -88,7 +87,7 @@ namespace HelpTheHelpers.Controllers
                     TagId = tagId
                 };
 
-                context.EventTags.Add(eventTag);
+                context.TaskTags.Add(eventTag);
                 context.SaveChanges();
 
                 return Redirect("/Tasks/Detail/" + taskId);
@@ -99,7 +98,7 @@ namespace HelpTheHelpers.Controllers
 
         public IActionResult Detail(int id)
         {
-            List<TaskTag> taskTags = context.EventTags
+            List<TaskTag> taskTags = context.TaskTags
                 .Where(et => et.TagId == id)
                 .Include(et => et.Task)
                 .Include(et => et.Tag)

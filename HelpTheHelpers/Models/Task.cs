@@ -12,7 +12,7 @@ namespace HelpTheHelpers.Models
         public int CategoryId { get; set; }
 
 
-        public int Id { get; }
+        public int Id { get; set; }
 
      
         public Task(string name, string description, string contactNumber)

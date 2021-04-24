@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
 using HelpTheHelpers.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace HelpTheHelpers.Data
 {
@@ -9,7 +8,7 @@ namespace HelpTheHelpers.Data
         public DbSet<Task> Tasks { get; set; }
         public DbSet<TaskCategory> Categories { get; set; }
         public DbSet<Tag> Tags { get; set; }
-        public DbSet<TaskTag> EventTags { get; set; }
+        public DbSet<TaskTag> TaskTags { get; set; }
 
         public TaskDbContext(DbContextOptions<TaskDbContext> options)
             : base(options)

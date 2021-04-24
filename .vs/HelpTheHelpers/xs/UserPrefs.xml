@@ -1,30 +1,38 @@
 ﻿<Properties StartupConfiguration="{C46057BC-1286-4CD5-87E7-5DB89DC011D8}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="HelpTheHelpers/Controllers/TasksController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument=".vs/HelpTheHelpers/xs/UserPrefs.xml">
     <Files>
       <File FileName="HelpTheHelpers/Views/TaskCategory/Index.cshtml" Line="16" Column="45" />
       <File FileName="HelpTheHelpers/Views/TaskCategory/Create.cshtml" />
       <File FileName="HelpTheHelpers/Models/Tag.cs" />
       <File FileName="HelpTheHelpers/Models/Task.cs" />
-      <File FileName="HelpTheHelpers/Data/TaskDbContext.cs" Line="4" Column="1" />
+      <File FileName="HelpTheHelpers/Data/TaskDbContext.cs" Line="3" Column="1" />
       <File FileName="HelpTheHelpers/ViewModels/AddTaskCategoryViewModel.cs" />
       <File FileName="HelpTheHelpers/ViewModels/AddTaskTagViewModel.cs" Line="8" Column="37" />
       <File FileName="HelpTheHelpers/ViewModels/AddTaskViewModel.cs" Line="5" Column="1" />
       <File FileName="HelpTheHelpers/ViewModels/TaskDetailViewModel.cs" />
       <File FileName="HelpTheHelpers/Views/Tag/AddTask.cshtml" Line="1" Column="1" />
       <File FileName="HelpTheHelpers/Views/Tag/Index.cshtml" Line="4" Column="1" />
-      <File FileName="HelpTheHelpers/Controllers/TagController.cs" Line="10" Column="1" />
+      <File FileName="HelpTheHelpers/Controllers/TagController.cs" Line="8" Column="1" />
       <File FileName="HelpTheHelpers/Controllers/TasksController.cs" Line="19" Column="33" />
+      <File FileName=".vs/HelpTheHelpers/xs/project-cache/HelpTheHelpers-Debug.json" Line="1" Column="1" />
+      <File FileName=".vs/HelpTheHelpers/xs/UserPrefs.xml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Option id="ShowAllFiles" value="True" />
           <Node name="HelpTheHelpers" expanded="True">
+            <Node name=".vs" expanded="True">
+              <Node name="HelpTheHelpers" expanded="True">
+                <Node name="xs" expanded="True">
+                  <Node name="project-cache" expanded="True" />
+                  <Node name="UserPrefs.xml" selected="True" />
+                </Node>
+              </Node>
+            </Node>
             <Node name="HelpTheHelpers" expanded="True">
               <Node name="Dependencies" expanded="True" />
-              <Node name="Controllers" expanded="True">
-                <Node name="TasksController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="ViewModels" expanded="True" />
