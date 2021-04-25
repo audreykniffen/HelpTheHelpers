@@ -22,7 +22,7 @@ namespace HelpTheHelpers.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            List<Models.ATask> Atasks = context.ATask
+            List<ATask> Atasks = context.ATask
                 .Include(e => e.Category)
                 .ToList();
 
@@ -54,7 +54,7 @@ namespace HelpTheHelpers.Controllers
                 context.ATask.Add(newATask);
                 context.SaveChanges();
 
-                return Redirect("/ATasks");
+                return Redirect("/Tasks");
             }
 
             return View(addTaskViewModel);

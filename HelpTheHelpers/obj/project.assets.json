@@ -914,7 +914,7 @@
       "outputPath": "/Users/audreykniffen/Projects/HelpTheHelpers/HelpTheHelpers/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/audreykniffen/.nuget/NuGet/NuGet.Config"
+        "/Users/audreykniffen/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

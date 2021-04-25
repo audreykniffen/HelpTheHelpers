@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HelpTheHelpers.Data;
@@ -82,15 +83,6 @@ namespace HelpTheHelpers.Controllers
                     context.SaveChanges();
                 }
 
-                TaskTag eventTag = new TaskTag
-                {
-                    TaskId = taskId,
-                    TagId = tagId
-                };
-
-                context.TaskTags.Add(eventTag);
-                context.SaveChanges();
-
                 return Redirect("/Tasks/Detail/" + taskId);
             }
 
@@ -99,15 +91,13 @@ namespace HelpTheHelpers.Controllers
 
         public IActionResult Detail(int id)
         {
-            List<TaskTag> taskTags = context.TaskTags
+            List<TaskTag> eventTags = context.TaskTags
                 .Where(et => et.TagId == id)
                 .Include(et => et.ATask)
                 .Include(et => et.Tag)
                 .ToList();
 
-            return View(taskTags);
+            return View(eventTags);
         }
-      
-
     }
 }
